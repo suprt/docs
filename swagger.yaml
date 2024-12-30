@@ -1,0 +1,52 @@
+basePath: /
+definitions:
+  main.SearchRequest:
+    properties:
+      query:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: GeoCode API Server
+  title: GeoCode API
+  version: "1.0"
+paths:
+  /api/address/search:
+    post:
+      consumes:
+      - application/json
+      description: Search place by address
+      operationId: search-handler
+      parameters:
+      - description: Search request query
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/main.SearchRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            type: integer
+        "500":
+          description: Internal Server Error
+          schema:
+            type: integer
+        default:
+          description: ""
+          schema:
+            type: integer
+      summary: Search
+swagger: "2.0"
