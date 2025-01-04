@@ -39,33 +39,27 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "List of searched address",
                         "schema": {
-                            "type": "GeocodeResponse"
+                            "$ref": "#/definitions/main.SearchResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Error in request",
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Page not found",
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal error",
                         "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "default": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 }
@@ -95,33 +89,27 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "List of searched address",
                         "schema": {
-                            "type": "SearchResponse"
+                            "$ref": "#/definitions/main.SearchResponse"
                         }
                     },
                     "400": {
-                        "description": "Bad Request",
+                        "description": "Error in request",
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Not Found",
+                        "description": "Page not found",
                         "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Internal error",
                         "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "default": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 }
@@ -129,6 +117,26 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "main.Address": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "house": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "string"
+                },
+                "lon": {
+                    "type": "string"
+                },
+                "street": {
+                    "type": "string"
+                }
+            }
+        },
         "main.GeocodeRequest": {
             "type": "object",
             "properties": {
@@ -147,6 +155,17 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        },
+        "main.SearchResponse": {
+            "type": "object",
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.Address"
+                    }
+                }
+            }
         }
     }
 }`
@@ -155,7 +174,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:8080",
-	BasePath:         "/",
+	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "GeoCode API",
 	Description:      "GeoCode API Server",

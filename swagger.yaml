@@ -1,5 +1,17 @@
-basePath: /
 definitions:
+  main.Address:
+    properties:
+      city:
+        type: string
+      house:
+        type: string
+      lat:
+        type: string
+      lon:
+        type: string
+      street:
+        type: string
+    type: object
   main.GeocodeRequest:
     properties:
       lat:
@@ -11,6 +23,13 @@ definitions:
     properties:
       query:
         type: string
+    type: object
+  main.SearchResponse:
+    properties:
+      addresses:
+        items:
+          $ref: '#/definitions/main.Address'
+        type: array
     type: object
 host: localhost:8080
 info:
@@ -36,25 +55,21 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: List of searched address
           schema:
-            type: GeocodeResponse
+            $ref: '#/definitions/main.SearchResponse'
         "400":
-          description: Bad Request
+          description: Error in request
           schema:
-            type: integer
+            type: string
         "404":
-          description: Not Found
+          description: Page not found
           schema:
-            type: integer
+            type: string
         "500":
-          description: Internal Server Error
+          description: Internal error
           schema:
-            type: integer
-        default:
-          description: ""
-          schema:
-            type: integer
+            type: string
       summary: Geocode search
   /api/address/search:
     post:
@@ -73,24 +88,20 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: List of searched address
           schema:
-            type: SearchResponse
+            $ref: '#/definitions/main.SearchResponse'
         "400":
-          description: Bad Request
+          description: Error in request
           schema:
-            type: integer
+            type: string
         "404":
-          description: Not Found
+          description: Page not found
           schema:
-            type: integer
+            type: string
         "500":
-          description: Internal Server Error
+          description: Internal error
           schema:
-            type: integer
-        default:
-          description: ""
-          schema:
-            type: integer
+            type: string
       summary: Address Search
 swagger: "2.0"
