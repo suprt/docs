@@ -59,7 +59,7 @@ paths:
           schema:
             $ref: '#/definitions/main.SearchResponse'
         "400":
-          description: Bad request
+          description: Bad Request
           schema:
             type: integer
         "404":
