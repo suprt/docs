@@ -1,5 +1,12 @@
 basePath: /
 definitions:
+  main.GeocodeRequest:
+    properties:
+      lat:
+        type: string
+      lng:
+        type: string
+    type: object
   main.SearchRequest:
     properties:
       query:
@@ -12,6 +19,43 @@ info:
   title: GeoCode API
   version: "1.0"
 paths:
+  /api/address/geocode:
+    post:
+      consumes:
+      - application/json
+      description: Search place address by geocode
+      operationId: geocode-handler
+      parameters:
+      - description: Latitude and Longitude of place
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/main.GeocodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: GeocodeResponse
+        "400":
+          description: Bad Request
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            type: integer
+        "500":
+          description: Internal Server Error
+          schema:
+            type: integer
+        default:
+          description: ""
+          schema:
+            type: integer
+      summary: Geocode search
   /api/address/search:
     post:
       consumes:
@@ -31,7 +75,7 @@ paths:
         "200":
           description: OK
           schema:
-            type: string
+            type: SearchResponse
         "400":
           description: Bad Request
           schema:
@@ -48,5 +92,5 @@ paths:
           description: ""
           schema:
             type: integer
-      summary: Search
+      summary: Address Search
 swagger: "2.0"
