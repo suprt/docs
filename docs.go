@@ -45,30 +45,21 @@ const docTemplate = `{
                         }
                     },
                     "400": {
-                        "description": "Error in request",
+                        "description": "Bad Request",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "integer"
                         }
                     },
                     "404": {
-                        "description": "Page not found",
+                        "description": "Not Found",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "integer"
                         }
                     },
                     "500": {
-                        "description": "Internal error",
+                        "description": "Internal Server Error",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "integer"
                         }
                     }
                 }
@@ -104,30 +95,21 @@ const docTemplate = `{
                         }
                     },
                     "400": {
-                        "description": "Error in request",
+                        "description": "Bad Request",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "integer"
                         }
                     },
                     "404": {
-                        "description": "Page not found",
+                        "description": "Not Found",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "integer"
                         }
                     },
                     "500": {
-                        "description": "Internal error",
+                        "description": "Internal Server Error",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
+                            "type": "integer"
                         }
                     }
                 }

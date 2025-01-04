@@ -59,23 +59,17 @@ paths:
           schema:
             $ref: '#/definitions/main.SearchResponse'
         "400":
-          description: Error in request
+          description: Bad Request
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            type: integer
         "404":
-          description: Page not found
+          description: Not Found
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            type: integer
         "500":
-          description: Internal error
+          description: Internal Server Error
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            type: integer
       summary: Geocode search
   /api/address/search:
     post:
@@ -98,22 +92,16 @@ paths:
           schema:
             $ref: '#/definitions/main.SearchResponse'
         "400":
-          description: Error in request
+          description: Bad Request
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            type: integer
         "404":
-          description: Page not found
+          description: Not Found
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            type: integer
         "500":
-          description: Internal error
+          description: Internal Server Error
           schema:
-            additionalProperties:
-              type: string
-            type: object
+            type: integer
       summary: Address Search
 swagger: "2.0"
