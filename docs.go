@@ -164,7 +164,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.User"
+                            "$ref": "#/definitions/main.UserReq"
                         }
                     }
                 ],
@@ -223,7 +223,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.User"
+                            "$ref": "#/definitions/main.UserReq"
                         }
                     }
                 ],
@@ -313,12 +313,9 @@ const docTemplate = `{
                 }
             }
         },
-        "main.User": {
+        "main.UserReq": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "type": "integer"
-                },
                 "login": {
                     "type": "string"
                 },

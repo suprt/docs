@@ -31,10 +31,8 @@ definitions:
           $ref: '#/definitions/main.Address'
         type: array
     type: object
-  main.User:
+  main.UserReq:
     properties:
-      ID:
-        type: integer
       login:
         type: string
       password:
@@ -141,7 +139,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/main.User'
+          $ref: '#/definitions/main.UserReq'
       produces:
       - application/json
       responses:
@@ -180,7 +178,7 @@ paths:
         name: input
         required: true
         schema:
-          $ref: '#/definitions/main.User'
+          $ref: '#/definitions/main.UserReq'
       produces:
       - application/json
       responses:

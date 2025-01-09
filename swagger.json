@@ -157,7 +157,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.User"
+                            "$ref": "#/definitions/main.UserReq"
                         }
                     }
                 ],
@@ -216,7 +216,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/main.User"
+                            "$ref": "#/definitions/main.UserReq"
                         }
                     }
                 ],
@@ -306,12 +306,9 @@
                 }
             }
         },
-        "main.User": {
+        "main.UserReq": {
             "type": "object",
             "properties": {
-                "ID": {
-                    "type": "integer"
-                },
                 "login": {
                     "type": "string"
                 },
