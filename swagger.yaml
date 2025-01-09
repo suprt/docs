@@ -31,6 +31,15 @@ definitions:
           $ref: '#/definitions/main.Address'
         type: array
     type: object
+  main.User:
+    properties:
+      ID:
+        type: integer
+      login:
+        type: string
+      password:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact: {}
@@ -74,7 +83,11 @@ paths:
           description: Internal Server Error
           schema:
             type: integer
+      security:
+      - ApiKeyAuth: []
       summary: Geocode search
+      tags:
+      - search
   /api/address/search:
     post:
       consumes:
@@ -96,9 +109,9 @@ paths:
           schema:
             $ref: '#/definitions/main.SearchResponse'
         "400":
-          description: Bad Request
+          description: bad request
           schema:
-            type: integer
+            type: string
         "403":
           description: Forbidden
           schema:
@@ -111,7 +124,89 @@ paths:
           description: Internal Server Error
           schema:
             type: integer
+      security:
+      - ApiKeyAuth: []
       summary: Address Search
+      tags:
+      - search
+  /api/login:
+    post:
+      consumes:
+      - application/json
+      description: Login user
+      operationId: login-handler
+      parameters:
+      - description: User info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/main.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: bad request
+          schema:
+            type: string
+        "403":
+          description: Forbidden
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            type: integer
+        "500":
+          description: Internal Server Error
+          schema:
+            type: integer
+      summary: Login
+      tags:
+      - auth
+  /api/register:
+    post:
+      consumes:
+      - application/json
+      description: Register new user
+      operationId: register-handler
+      parameters:
+      - description: User info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/main.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+        "400":
+          description: bad request
+          schema:
+            type: string
+        "403":
+          description: Forbidden
+          schema:
+            type: integer
+        "404":
+          description: Not Found
+          schema:
+            type: integer
+        "500":
+          description: Internal Server Error
+          schema:
+            type: integer
+      summary: Register
+      tags:
+      - auth
 securityDefinitions:
   ApiKeyAuth:
     in: header
