@@ -7,7 +7,6 @@
         "version": "1.0"
     },
     "host": "localhost:8080",
-    "basePath": "/",
     "paths": {
         "/api/address/geocode": {
             "post": {
@@ -40,6 +39,12 @@
                     },
                     "400": {
                         "description": "Bad Request",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
                         "schema": {
                             "type": "integer"
                         }
@@ -90,6 +95,12 @@
                     },
                     "400": {
                         "description": "Bad Request",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
                         "schema": {
                             "type": "integer"
                         }
@@ -160,6 +171,13 @@
                     }
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

@@ -50,6 +50,12 @@ const docTemplate = `{
                             "type": "integer"
                         }
                     },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
                     "404": {
                         "description": "Not Found",
                         "schema": {
@@ -96,6 +102,12 @@ const docTemplate = `{
                     },
                     "400": {
                         "description": "Bad Request",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
                         "schema": {
                             "type": "integer"
                         }
@@ -167,6 +179,13 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
 }`
 
@@ -174,7 +193,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:8080",
-	BasePath:         "/",
+	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "GeoCode API",
 	Description:      "GeoCode API Server",
